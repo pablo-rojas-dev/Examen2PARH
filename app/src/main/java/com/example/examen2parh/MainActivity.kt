@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.examen2parh.databinding.ActivityMainBinding
+import kotlin.toString
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun iniciarSesion(){
         binding.btnInciarSesion.setOnClickListener {
-
+            val nombre = binding.etNombre.text.toString().trim()
             val contrasenia = "abc123"
 
             if (binding.etContrasenia.text.toString() != contrasenia) {
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }else{
                 val intent = Intent(this, ProfileActivity::class.java).apply{
-
+                    putExtra("EXTRA_NOMBRE",nombre)
                 }
             }
 
